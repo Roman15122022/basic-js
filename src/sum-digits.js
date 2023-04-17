@@ -13,11 +13,17 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function getSumOfDigits(n) {
-  while (n >= 10) {
-    // Convert the number to a string, split it into an array of digits, and compute their sum
-    n = String(n).split('').reduce((sum, digit) => sum + Number(digit), 0);
+  result = 0;
+  while(n){
+    result += n % 10;
+    n = parseInt(n / 10);
   }
-  return n;
+  if(result % 10 === result) {
+    return result
+  }
+  else{
+    return getSumOfDigits(result);
+  }
 }
 
 
